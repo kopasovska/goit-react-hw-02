@@ -1,0 +1,8 @@
+.optionsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.optionButton {
+  text-transform: capitalize;
+}
