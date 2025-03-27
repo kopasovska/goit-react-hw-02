@@ -15,6 +15,7 @@ function App() {
   });
 
   let totalFeedback = votes.good + votes.neutral + votes.bad;
+  let positiveFeedback = Math.round((votes.good / totalFeedback) * 100);
 
   const updateFeedback = feedbackType => {
     setVotes({
@@ -40,15 +41,18 @@ function App() {
     <>
       <Description />
       <Options
-        voteTypes={Object.keys(votes)}
         updateVotes={updateFeedback}
         {...(totalFeedback > 0 && {
-          addReset: true,
+          totalVotes: totalFeedback,
           resetVotes: resetFeedback,
         })}
       />
       {totalFeedback ? (
-        <Feedback votes={votes} totalFeedback={totalFeedback} />
+        <Feedback
+          votes={votes}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
       ) : (
         <Notification />
       )}

@@ -1,25 +1,37 @@
 import css from './Options.module.css';
 
-const Options = ({ voteTypes, updateVotes, addReset, resetVotes }) => {
+const Options = ({ updateVotes, totalVotes, resetVotes }) => {
   return (
-    <div className={css.optionsContainer}>
-      {voteTypes.map((type, index) => {
-        return (
-          <button
-            key={index}
-            onClick={() => updateVotes(type)}
-            className={css.optionButton}
-          >
-            {type}
-          </button>
-        );
-      })}
-      {addReset && (
-        <button onClick={resetVotes} className={css.optionButton}>
-          Reset
+    <ul className={css.optionsContainer}>
+      <li>
+        <button
+          onClick={() => updateVotes('good')}
+          className={css.optionButton}
+        >
+          Good
         </button>
+      </li>
+      <li>
+        <button
+          onClick={() => updateVotes('neutral')}
+          className={css.optionButton}
+        >
+          Neutral
+        </button>
+      </li>
+      <li>
+        <button onClick={() => updateVotes('bad')} className={css.optionButton}>
+          Bad
+        </button>
+      </li>
+      {totalVotes > 0 && (
+        <li>
+          <button onClick={resetVotes} className={css.optionButton}>
+            Reset
+          </button>
+        </li>
       )}
-    </div>
+    </ul>
   );
 };
 

@@ -1,6 +1,6 @@
 import css from './Feedback.module.css';
 
-const Feedback = ({ votes, totalFeedback }) => {
+const Feedback = ({ votes, totalFeedback, positiveFeedback }) => {
   return (
     <>
       {Object.entries(votes).map(([key, value], index) => (
@@ -9,9 +9,7 @@ const Feedback = ({ votes, totalFeedback }) => {
         </p>
       ))}
       <p className={css.feedbackText}>Total: {totalFeedback}</p>
-      <p className={css.feedbackText}>
-        Positive: {Math.round((votes.good / totalFeedback) * 100)}%
-      </p>
+      <p className={css.feedbackText}>Positive: {positiveFeedback}%</p>
     </>
   );
 };
